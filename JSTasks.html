@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebJsTasks</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="Sad.css">
+</head>
+<body class="container">
+	<div class="container">
+		<div class="head">
+			<h2>My page</h2>
+			<div class="menu not-printable">
+				<div class="menu-item">
+					<p class="menu-item-name">Menu</p>
+					<div class="menu-items">
+						<div class="menu-item">
+							<p class="menu-item-name"><a href="MainPage.html">Main page</a></p>
+						</div>
+						<div class="menu-item">
+							<p class="menu-item-name">Сreation</p>
+							<div class="menu-items">
+								<div class="menu-item">
+									<p class="menu-item-name"><a href="PoemPage.html">Poems</a></p>
+								</div>
+								<div class="menu-item">
+									<p class="menu-item-name"><a href="AboutPage.html">About me</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="menu-item">
+							<p class="menu-item-name">Coding</p>
+							<div class="menu-items">
+								<div class="menu-item">
+									<p class="menu-item-name"><a href="MathPage.html">Math + SVG</a></p>
+								</div>
+								<div class="menu-item">
+									<p class="menu-item-name"><a href="JSTasks.html">JS-task</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="page">
+		<div class="block-content">
+			<div class="JStasks">
+
+				<div class="first-task">
+					<div>
+						<select name="Spicker" id="SPicker" onchange="ChangeS()">
+							<option>выберите фигуру</option>
+							<option value="Квадрат">Квадрат</option>
+							<option value="Круг">Круг</option>
+							<option value="Треугольник">Треугольник</option>
+							<option value="Трапеция">Трапеция</option>
+							<option value="Параллелограмм">Параллелограмм</option>
+							<option value="Эллипс">Эллипс</option>
+						</select>
+						<button onclick="Digit()">Расчитать</button>
+					</div>
+
+					<div>
+						<p id="A" class="inputv">Сторона А
+						<input id="Av" type="number" name="A" value="">
+						</p>
+					</div>
+					<div>
+						<p id="B" class="inputv">Сторона B
+						<input id="Bv" type="number" name="B" value="">
+						</p>
+					</div>
+					<div>
+						<p id="H" class="inputv">Высота
+						<input id="Hv" type="number" name="H" value="">
+						</p>
+					</div>
+					<div>
+						<p id="Radius" class="inputv">Радиус
+						<input id="Rv" type="number" name="R" value="">
+						</p>
+					</div>
+				</div>
+
+				<div class="second-task">
+					<p>	Ряд простых чисел до
+						<input id="SimlpleChk" type="number" name="SimlpleChk" value="1">
+						<button onclick="findsimple()">Проверить</button><br>
+						<textarea class="ansarea" id="AnsLabel" rows="7" cols="100" readonly="true"></textarea>
+
+						<div>
+							<div id="ans">
+
+							</div>
+						</div>
+					</p>
+				</div>
+
+				<div class="third-task">
+					<input class="matrixelms" id="00matrixelm" type="number" name="00matrixelm" value="1">
+					<input class="matrixelms" id="01matrixelm" type="number" name="01matrixelm" value="1">
+					<input class="matrixelms" id="02matrixelm" type="number" name="02matrixelm" value="1">
+					<input class="matrixelms" id="03matrixelm" type="number" name="03matrixelm" value="1"><br>
+					<input class="matrixelms" id="10matrixelm" type="number" name="10matrixelm" value="1">
+					<input class="matrixelms" id="11matrixelm" type="number" name="11matrixelm" value="1">
+					<input class="matrixelms" id="12matrixelm" type="number" name="12matrixelm" value="1">
+					<input class="matrixelms" id="13matrixelm" type="number" name="13matrixelm" value="1"><br>
+					<input class="matrixelms" id="20matrixelm" type="number" name="20matrixelm" value="1">
+					<input class="matrixelms" id="21matrixelm" type="number" name="21matrixelm" value="1">
+					<input class="matrixelms" id="22matrixelm" type="number" name="22matrixelm" value="1">
+					<input class="matrixelms" id="23matrixelm" type="number" name="23matrixelm" value="1">
+					<button onclick="MatrixMatch()">Расчитать</button><br>
+					<textarea class="ansarea" id="AnsLabelmatix" rows="4" cols="24" readonly="true"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="JSTasks.js"></script>
+
+</body>	
+</html>

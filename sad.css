@@ -10,6 +10,63 @@
 	float: left;
 }
 
+.ansarea {
+	resize: none;
+}
+
+.inputv{
+	visibility: hidden;
+}
+.svg{
+	height: 400px;
+	width: 1000px;
+}
+
+.JStasks{
+
+	margin: 10px;
+	padding: 10px;
+}
+
+@media print {
+	.not-printable, img {
+		display: none;
+	}
+	.block-content {
+		width: 100%;
+	}
+	#poem-content {
+		width: 80%;
+		margin-left: 15%;
+		display: inline-block;
+	}
+}
+
+.first-task{
+	border-style: double;
+	border-color: black;
+	border-width: 1px;
+	width: 30%;
+}
+
+.second-task{
+	border-style: double;
+	border-color: black;
+	border-width: 1px;
+	width: 50%;
+}
+
+.third-task{
+	border-style: double;
+	border-color: black;
+	border-width: 1px;
+	width: 30%;
+}
+
+.matrixelms{
+	width: 40px;
+}
+
 .img-wrapper {
 	text-align: justify;
 	padding-right: 10px;
@@ -18,9 +75,9 @@
 .head {
 	margin-bottom: 1em;
 	width: 100%;
-	background-color: #ba9665;
+	background-color: #4fba2f;
 	border-style: double;
-	border-color: black;
+	border-color: #25216b;
 	border-width: 1px;
 	border-radius: 10px;
 }
@@ -30,9 +87,9 @@
 	width: 90%;
 	margin: 0 auto;
 	border-style: double;
-	border-color: black;
+	border-color: #25216b;
 	border-width: 1px;
-	background-color: #ba9665;
+	background-color: #4fba2f;
 	border-radius: 0 20px;
 }
 
@@ -66,15 +123,15 @@
 .menu-item > .menu-items {
 	display: none;
     position: absolute;
-    background-color: #ba9665;
+    background-color: #66ba1c;
     min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(57, 15, 59, 0.2);
     margin-left: 10px;
     padding: 12px 16px;
     z-index: 1;
     border-radius: 10px;
     border-style: solid;
-    border-color: black;
+    border-color: #25216b;
     border-width: 1px;
 }
 .menu-item:hover > .menu-items {
@@ -88,10 +145,10 @@
 }
 
 .menu-item:hover {
-    background-color: #ba9665;
+    background-color: #4fba2f;
     cursor: pointer;
     border-style: double;
-	border-color: black;
+	border-color: #25216b;
 	border-width: 1px;
 	border-radius: 5px;
 }
@@ -104,7 +161,7 @@
 
 h2, a, h3 {
 	text-align: center;
-	color: black;
+	color: #091605;
 	margin-top: 0;
 }
 
@@ -118,5 +175,5 @@ code {
 }
 
 hr {
-	color: black;
+	color: #4fba2f;
 }
