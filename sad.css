@@ -137,7 +137,10 @@
 .menu-item:hover > .menu-items {
 	display: block;
 }
-
+.empty{
+	width: auto ;
+	height: auto ;
+}
 .menu-item {
     white-space: nowrap;
     background: none;

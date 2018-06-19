@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JsTasks</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="Sad.css">
+</head>
+<body class="container">
+<div class="container">
+    <div class="head">
+        <h2>My page</h2>
+        <div class="menu not-printable">
+            <div class="menu-item">
+                <p class="menu-item-name">Menu</p>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <p class="menu-item-name"><a href="MainPage.html">Main page</a></p>
+                    </div>
+                    <div class="menu-item">
+                        <p class="menu-item-name">Сreation</p>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <p class="menu-item-name"><a href="PoemPage.html">Poems</a></p>
+                            </div>
+                            <div class="menu-item">
+                                <p class="menu-item-name"><a href="AboutPage.html">About me</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <p class="menu-item-name">Coding</p>
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <p class="menu-item-name"><a href="MathPage.html">Math + SVG</a></p>
+                            </div>
+                            <div class="menu-item">
+                                <p class="menu-item-name"><a href="JSTasks.html">JS-task</a></p>
+                            </div>
+                            <div class="menu-item">
+                                <p class="menu-item-name"><a href="JQuery.html">JQuery</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page">
+    <div class="block-content">
+        <div class="container">
+            <div class="empty">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                <script>
+                    var animalsList = [{
+                        name: "Животные",
+                        childrenList: [
+                            {
+                                name: "Млекопитающие",
+                                childrenList: [
+                                    "Коровы", "Ослы", "Собаки", "Тигры"
+                                ]
+                            },
+                            {
+                                name: "Другие",
+                                childrenList: [
+                                    "Змеи", "Птицы", "Ящерицы"
+                                ]
+                            }
+                        ]
+                    },
+                        {
+                            name: "Рыбы",
+                            childrenList: [
+                                {
+                                    name: "Аквариумные",
+                                    childrenList: [
+                                        "Гуппи", "Скалярии"
+                                    ]
+                                },
+                                {
+                                    name: "Морские",
+                                    childrenList: [
+                                        "Морская форель"
+                                    ]
+                                }
+                            ]
+                        }];
+
+                    function genList(list, rootElem) {
+                        if (typeof list === "string") {
+
+                            $("<li>"+ list +"</li>").appendTo(rootElem);
+
+                        } else {
+                            for (let i = 0; i < list.length; ++i) {
+
+                                let child = list[i];
+
+                                if (typeof child !== "string") {
+
+                                    let li = $("<li>"+ child.name +"</li>");
+                                    let ul = $("<ul></ul>");
+                                    genList(child.childrenList, ul);
+                                    li.append(ul);
+                                    rootElem.append(li);
+
+                                } else
+
+                                    genList(child, rootElem);
+                            }
+                        }
+                    }
+
+                    function showAllChildren(elem) {
+
+                        console.log(elem);
+
+                        if (elem.hasChildNodes()) {
+                            for (i of elem.children) {
+
+                                showAllChildren(i);
+                            }
+                        }
+                    }
+                    $(document).ready(() => {
+
+                        var root = $("div.empty");
+                        var rootUl = $("<ul></ul>");
+                        root.append(rootUl);
+                        genList(animalsList, rootUl);
+
+                        $("li").click(function (e) {
+
+                            $(this).children().slideToggle("slow");
+                            e.stopPropagation();
+
+                        });
+
+                        showAllChildren(document.getElementsByClassName("empty")[0]);
+
+                    });
+
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
