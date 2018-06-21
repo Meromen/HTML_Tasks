@@ -4,6 +4,29 @@
     <title>JsTasks</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="Sad.css">
+    <style>
+
+        .link {
+            stroke: #000;
+            stroke-width: 1.5px;
+        }
+
+        .node {
+            cursor: move;
+            fill: #ccc;
+            stroke: #000;
+            stroke-width: 1.5px;
+        }
+
+        .node.fixed {
+            fill: #f00;
+        }
+        text{
+            color : black;
+            font-size: 12px;
+        }
+
+    </style>
 </head>
 <body class="container">
 <div class="container">
@@ -39,6 +62,9 @@
                             <div class="menu-item">
                                 <p class="menu-item-name"><a href="JQuery.html">JQuery</a></p>
                             </div>
+                            <div class="menu-item">
+                                <p class="menu-item-name"><a href="Calc.html">Calculator</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,8 +76,89 @@
 <div class="page">
     <div class="block-content">
         <div class="container">
+            <script src="//d3js.org/d3.v3.min.js"></script>
+            <script>
+
+                var width = 1920,
+                    height = 1080;
+
+                var force = d3.layout.force()
+                    .size([width, height])
+                    .charge(-400)
+                    .linkDistance(100)
+                    .on("tick", tick);
+
+                var drag = force.drag()
+                    .on("dragstart", dragstart);
+
+                var svg = d3.select("body").append("svg")
+                    .attr("width", width)
+                    .attr("height", height);
+
+                var link =  svg.selectAll(".link"),
+                    node = svg.selectAll(".node"),
+                    text = svg.selectAll(".text")
+
+
+                d3.json("graph.json", function(error, graph) {
+                    if (error) throw error;
+
+                    force
+                        .nodes(graph.nodes)
+                        .links(graph.links)
+                        .start();
+
+                    link = link.data(graph.links)
+                        .enter().append("line")
+                        .attr("class", "link");
+
+                    node = node.data(graph.nodes)
+                        .enter().append("g")
+                        .attr("class", "node")
+                        .call(force.drag)  ;
+
+
+                    node.append ("circle")
+                        .attr("class", "node")
+                        .attr("r", 50)
+                        .attr("cx", 0 )
+                        .attr("cy", 0)
+                        .on("dblclick", dblclick)
+                        .call(drag);
+
+                    node.append("text")
+                        .attr("dx", -50)
+                        .attr("dy", 0)
+                        .text(function(d) { return d.text });
+
+
+                });
+
+                function tick() {
+                    link.attr("x1", function(d) { return d.source.x; })
+                        .attr("y1", function(d) { return d.source.y; })
+                        .attr("x2", function(d) { return d.target.x; })
+                        .attr("y2", function(d) { return d.target.y; });
+
+                    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+
+
+
+                    text.attr("value", function (d) {return d.text;});
+                }
+
+                function dblclick(d) {
+                    d3.select(this).classed("fixed", d.fixed = false);
+                }
+
+                function dragstart(d) {
+                    d3.select(this).classed("fixed", d.fixed = true);
+                }
+
+            </script>
             <div class="empty">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                <script src="http://viz-js.com/bower_components/viz.js/viz.js"></script>
                 <script>
                     var animalsList = [{
                         name: "Животные",
@@ -141,6 +248,7 @@
                         showAllChildren(document.getElementsByClassName("empty")[0]);
 
                     });
+
 
                 </script>
             </div>
